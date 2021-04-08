@@ -1,3 +1,4 @@
+// Getting the project
 pipeline {
     agent any
 
@@ -5,6 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
             echo "Starting pipeline"
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rmbym/TP.git']]])
             }
         }
     }
