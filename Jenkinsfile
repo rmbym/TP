@@ -16,9 +16,7 @@ pipeline {
                 }
             }
             steps {
-                /exit
-                ls -la
-                pwd
+                bash 'ls'
             }
         }
     }
