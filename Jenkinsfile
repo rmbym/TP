@@ -23,9 +23,10 @@ pipeline {
 /// 3- Code quality
         stage('Code Quality') {
             steps {
-                sh 'wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.41.1/checkstyle-8.41.1-all.jar'
-                sh 'wget https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/sun_checks.xml'
-                recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
+                scanForIssues tool: java(reportEncoding: 'UTF-8')
+                scanForIssues tool: checkStyle(reportEncoding: 'UTF-8')
+                publishIssues healthy: 10, issues: [], unhealthy: 50
+                //recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
             }
         }
     }
