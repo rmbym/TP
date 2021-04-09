@@ -26,6 +26,13 @@ pipeline {
                 sh 'jar cvf poke_tour.jar bin/poke_tour/*.class'
             }
         }
+
+        stage('DockerImage') {
+            agent { docker { image 'docker:dind'}}
+            steps {
+                docker
+            }
+        }
     }
     post {
             always {
