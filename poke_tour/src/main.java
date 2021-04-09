@@ -16,10 +16,10 @@ public class main {
 		//def des equipes
 		Pokemon d1[]= {Ra,Ham};
 		Pokemon d2[]= {Pom,LLou};
-		System.out.println("\n#######\tdébut du tournoi !!!! ########\n");
+		System.out.println("\n#######\tdebut du tournoi !!!! ########\n");
 		tournoi(d1,d2);
 	}
-	public static void tournoi(Pokemon [] g1, Pokemon [] g2) {// défini le combat
+	public static void tournoi(Pokemon [] g1, Pokemon [] g2) {// dÃ©fini le combat
 		for(int i=0;i <g1.length;i++) {
 			for(int k=0;k <g2.length;k++) {
 				while(g2[k].pv !=0 || g1[i].pv !=0) {
