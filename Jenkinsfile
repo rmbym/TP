@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls poke_tour'
-                sh 'javac -d poke_tour/bin poke_tour/src/*.java'
+                sh 'javac -encoding utf-8 -d poke_tour/bin poke_tour/src/*.java'
                 sh 'ls poke_tour'
             }
         }
