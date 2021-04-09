@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'ls poke_tour'
                 sh 'javac -encoding utf-8 -d poke_tour/bin poke_tour/src/*.java'
-                sh 'ls poke_tour'
+                sh 'jar cvf poke_tour.jar poke_tour/bin/*.class'
             }
         }
     }
