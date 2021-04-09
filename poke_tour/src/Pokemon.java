@@ -5,7 +5,7 @@ public class Pokemon {
 	protected int pv, pp;
 	
 	public Pokemon(String pnomPoke, int pPV,int pPP) {//constr
-		System.out.println("création d'un pokemon !");
+		System.out.println("creation d'un pokemon !");
 		nomPoke=pnomPoke;pv=pPV;pp=pPP;this.setCri();this.setCriV();this.setCriD();
 		//System.out.println(this.Desc());
 	}
@@ -26,12 +26,12 @@ public class Pokemon {
 	
 	public int attaque(Pokemon b) {
 		System.out.println(this.nomPoke+" lance une attaque !");
-		System.out.println(b.nomPoke+" subit "+this.pp+" de dégats !");
+		System.out.println(b.nomPoke+" subit "+this.pp+" de degats !");
 		b.pv -= this.pp;
 		if(b.pv <=0) {
-			System.out.println(b.nomPoke+" est KO , son cri de défaite :"+b.getCriD());
+			System.out.println(b.nomPoke+" est KO , son cri de defaite :"+b.getCriD());
 			b.pv=0;
-			System.out.println(this.nomPoke+" a gagné, son cri de victoire :"+this.criV);
+			System.out.println(this.nomPoke+" est victorieux, son cri de victoire :"+this.criV);
 			}
 		else {
 			System.out.println(b.nomPoke+" a "+b.pv+" PV restants !");}
