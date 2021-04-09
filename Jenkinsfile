@@ -15,8 +15,9 @@ pipeline {
 /// 1- Build project
         stage('Build') {
             steps {
-                sh 'ls'
-                sh 'javac poke_tour/src/main.java'
+                sh 'ls poke_tour'
+                sh 'javac -d poke_tour/bin poke_tour/src/*.java'
+                sh 'ls poke_tour'
             }
         }
     }
