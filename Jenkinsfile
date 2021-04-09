@@ -16,7 +16,7 @@ pipeline {
                 }
             }
             steps {
-                echo "Hello"
+                /exit
                 ls -la
                 pwd
             }
