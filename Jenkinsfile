@@ -8,6 +8,7 @@ pipeline {
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rmbym/TP.git']]])
             }
         }
+/// 1- Build project
         stage('Build') {
         agent {
                 docker {
@@ -15,7 +16,9 @@ pipeline {
                 }
             }
             steps {
-
+                echo "Hello"
+                ls -la
+                pwd
             }
         }
     }
