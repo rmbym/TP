@@ -30,7 +30,8 @@ pipeline {
         stage('DockerImage') {
             agent { docker { image 'docker:dind'}}
             steps {
-                docker ps -a
+                sh 'docker build -t yannickraoumbe/poke_tour:latest .'
+                sh 'docker images'
             }
         }
     }
