@@ -15,6 +15,8 @@ pipeline {
 /// 1- Build project
         stage('Build') {
             steps {
+                sh 'cd poke_tour/'
+                sh 'javac src/main.java'
                 sh 'ls'
             }
         }
