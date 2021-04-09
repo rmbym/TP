@@ -1,6 +1,10 @@
 // Getting the project
 pipeline {
-    agent none
+    agent {
+    docker {
+        image 'openjdk:latest'
+        }
+    }
 /// 1- Recupérer le code
     stages {
         stage('Checkout') {
@@ -10,11 +14,6 @@ pipeline {
         }
 /// 1- Build project
         stage('Build') {
-        agent {
-                docker {
-                    image 'openjdk:latest'
-                }
-            }
             steps {
                 bash 'ls'
             }
