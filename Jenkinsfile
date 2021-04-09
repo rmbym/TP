@@ -1,4 +1,3 @@
-// Getting the project
 pipeline {
     agent {
         docker {
@@ -22,8 +21,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'javac -encoding utf-8 -d bin poke_tour/src/*.java'
-                sh 'ls bin/poke_tour'
+               // does not work, cannot import Junit | sh 'javac -encoding utf-8 -d . testjunit.java'
                 sh 'jar cvf poke_tour.jar bin/poke_tour/*.class'
+               // cannot import Junit | sh 'java -cp junit.jar testjunit.java.class junit.textui.TestRunner testjunit'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
             agent { docker { image 'docker:dind'}}
             steps {
                 sh 'docker build -t yannickraoumbe/poke_tour:latest .'
-                sh 'docker images'
+                sh 'docker images '
             }
         }
     }
