@@ -30,7 +30,7 @@ pipeline {
         stage('DockerImage') {
             agent { docker { image 'docker:dind'}}
             steps {
-                docker
+                docker ps -a
             }
         }
     }
