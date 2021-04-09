@@ -15,9 +15,20 @@ pipeline {
 /// 1- Build project
         stage('Build') {
             steps {
-                sh 'ls'
                 sh 'javac -encoding utf-8 -d bin poke_tour/src/*.java'
-                sh 'jar cvf poke_tour.jar poke_tour/bin/*.class'
+                sh 'ls bin/poke_tour'
+                sh 'jar cvf poke_tour.jar bin/poke_tour/*.class'
+            }
+        }
+        stage('Artifacting Jar file') {
+            steps {
+                archiveArtifacts artifacts: 'poke_tour.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
+            }
+        }
+
+        stage('Code Quality') {
+            steps {
+            sh 'echo doing'
             }
         }
     }
