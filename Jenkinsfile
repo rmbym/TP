@@ -23,6 +23,7 @@ pipeline {
 /// 3- Code quality
         stage('Code Quality') {
             steps {
+                sh 'cd poke_tour/ && mvn checkstyle:checkstyle'
                 recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
             }
         }
