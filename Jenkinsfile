@@ -1,7 +1,7 @@
 // Getting the project
 pipeline {
     agent {
-        dockerAgent {
+        docker {
             image 'openjdk:latest'
         }
     }

@@ -1,0 +1,16 @@
+version: '3'
+volumes:
+  jenkins:
+    driver: local
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    user: root
+    privileged: true
+    ports:
+      - 8080:8080
+    container_name: jenkins
+    volumes:
+      - jenkins:/var/jenkins_home:Z
+      - /var/run/docker.sock:/var/run/docker.sock:Z
+      - /usr/bin/docker:/usr/bin/docker:Z
