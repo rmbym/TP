@@ -15,10 +15,7 @@ pipeline {
 
         stage('Code Quality') {
             steps {
-                scanForIssues tool: java(reportEncoding: 'UTF-8')
-                scanForIssues tool: checkStyle(reportEncoding: 'UTF-8')
-                //publishIssues healthy: 10, issues: [], unhealthy: 50
-                //recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
+                recordIssues(tools: [java(pattern: '\'**/checkstyle-results.xml\'', reportEncoding: 'UTF-8'), checkStyle(pattern: '\'**/checkstyle-results.xml\'', reportEncoding: 'UTF-8')])
             }
         }
 
