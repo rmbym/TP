@@ -21,7 +21,6 @@ pipeline {
                 //recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
             }
         }
-    }
     /// 3- Build project
             stage('Build') {
                 steps {
@@ -36,5 +35,6 @@ pipeline {
             always {
                 archiveArtifacts artifacts: 'poke_tour.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
             }
-        }
+       }
+    }
 }
