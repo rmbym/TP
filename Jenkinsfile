@@ -23,8 +23,8 @@ pipeline {
 /// 3- Code quality
         stage('Code Quality') {
             steps {
-                sh 'curl https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.41.1/checkstyle-8.41.1-all.jar'
-                sh 'curl https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/sun_checks.xml'
+                sh 'wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.41.1/checkstyle-8.41.1-all.jar'
+                sh 'wget https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/sun_checks.xml'
                 recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
             }
         }
