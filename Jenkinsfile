@@ -12,7 +12,7 @@ pipeline {
             checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rmbym/TP.git']]])
             }
         }
-/// 1- Build project
+/// 2- Build project
         stage('Build') {
             steps {
                 sh 'javac -encoding utf-8 -d bin poke_tour/src/*.java'
@@ -20,16 +20,17 @@ pipeline {
                 sh 'jar cvf poke_tour.jar bin/poke_tour/*.class'
             }
         }
-        stage('Artifacting Jar file') {
-            steps {
-                archiveArtifacts artifacts: 'poke_tour.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
-            }
-        }
-
+/// 3- Code quality
         stage('Code Quality') {
             steps {
-            sh 'echo doing'
+                recordIssues(tools: [checkStyle(reportEncoding: 'UTF-8')])
             }
         }
     }
+/// 3- Artifact
+    post {
+            always {
+                archiveArtifacts artifacts: 'poke_tour.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
+            }
+        }
 }
